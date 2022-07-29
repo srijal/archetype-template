@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="variable-cleanup-flow" doc:id="039b6e4c-b045-406f-8111-1e81da1f30e8" >
+		<ee:transform doc:name="Transform Message" doc:id="518a05dd-9e04-4f75-af89-c335a1144b6e" >
+			<ee:message >
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="varAllVariable" ><![CDATA[%dw 2.0
+output application/json
+---
+vars pluck $$]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<foreach doc:name="For Each" doc:id="4c33b846-31a2-4883-8271-8aea10432a47" collection="#[vars.varAllVariable]">
+			<remove-variable doc:name="Remove Variable" doc:id="9a83f944-d787-4ed8-b59a-60f6addd81fa" variableName="#[payload]"/>
+		</foreach>
+	</flow>
+</mule>

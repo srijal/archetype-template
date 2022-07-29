@@ -1,0 +1,31 @@
+https:
+  host: "0.0.0.0"
+  port: "8082"
+  listener:
+   path: "/*"
+  private:
+   host: "0.0.0.0"
+   port: "8092"
+    
+http:
+  host: "0.0.0.0"
+  port: "8081"
+  listener:
+    path: "/*"
+  private:
+    host: "0.0.0.0"
+    port: "8091"
+reconnection:
+  frequency: "2000" 
+  attempts: "2"
+
+read-timeout: "900000"
+
+connection-idle-timeout: "900000"
+
+mule :
+  apiCategory: ""
+  
+app:
+  name: ${project.artifactId}
+  version: ${project.version}
